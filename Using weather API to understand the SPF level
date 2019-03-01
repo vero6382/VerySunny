@@ -1,0 +1,35 @@
+import requests
+
+api_address =  "http://api.openweathermap.org/data/2.5/uvi?appid=12c689a823d9b12f41a4d95f56894a64&"
+lon_user = input('longitude')
+lon = "lon=" + lon_user
+lat_user = input ('latitude')
+lat = "lat=" + lat_user + '&'
+url = api_address + lat + lon
+json_data = requests.get(url).json()
+format_add = json_data('value')
+
+print("According to the EPA recommendation, when UV index is ")
+print(format_add)
+
+#conditions/ spf recommendations:
+if 0 <= format_add < 3:
+  print("Low")
+  print("A UV Index reading of 0 to 2 means low danger from the sun's UV rays for the average person.")
+  print("Wear sunglasses on bright days. If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen. Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.")
+elif 3 <= format_add < 6:
+  print("Moderate")
+  print("A UV Index reading of 3 to 5 means moderate risk of harm from unprotected sun exposure.")
+  print("Stay in shade near midday when the sun is strongest. If outdoors, wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses. Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating. Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.")
+elif 6 <= format_add < 8:
+  print("High")
+  print("A UV Index reading of 6 to 7 means high risk of harm from unprotected sun exposure. Protection against skin and eye damage is needed.")
+  print("Reduce time in the sun between 10 a.m. and 4 p.m. If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses. Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating. Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.")
+elif 8 <= format_add < 11:
+  print("Very High")
+  print("A UV Index reading of 8 to 10 means very high risk of harm from unprotected sun exposure. Take extra precautions because unprotected skin and eyes will be damaged and can burn quickly.")
+  print("Minimize sun exposure between 10 a.m. and 4 p.m. If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses. Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating. Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.")
+elif format_add >= 11:
+  print("Extreme")
+  print("A UV Index reading of 8 to 10 means very high risk of harm from unprotected sun exposure. Take extra precautions because unprotected skin and eyes will be damaged and can burn quickly.")
+  print("Try to avoid sun exposure between 10 a.m. and 4 p.m. If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses. Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating. Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.")
